@@ -15,6 +15,6 @@
 
 ## Major Bugs
 - count_primes.py: </br>
-</br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13. This issue has been fixed by setting a boolean marker. 
-</br> Currently trying to optimize the time complexity but having trouble getting the algorithm below
-O(n*log(n)) time.
+</br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13. </br>
+
+</br>Solution: Set the value of the number that contains both factors as negative the first time it's being counted for. Then with the inclusion of a conditional that checks `array_primes[n_index] > 0` will cause the loop to skip over the value.
