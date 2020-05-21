@@ -8,11 +8,21 @@
 class Solution:
     def countPrimes(self, n: int) -> int:
 
-        # Plan: We will be implementing the Algorithm for Sieve of Eratosthenes (With our variation)
-        # Initialize an array of odd numbers from 2->N (have 2 initially inside the array)
-        # Do a little cleaning while initializing so that numbers divisible by 3,4,5, and 7 aren't added.
+        # Some edge case checks. The modifications to the loop only modify it by a constant so the change to the 
+        # complexity of the first loop on line 28 is still O(n). But conditionals also run in constant time so w/e.
+        if n <= 2:
+            return 0
+
+        elif n <= 5:
+            if n == 3:
+                return 1
+            return 2
+
+        elif n <= 7:
+            return 3
+
+        # Initialize array_primes with a few early prime numbers.
         array_primes = [2,3,5,7]
-        duplicates = {}
 
         # For all the odd integers from 1 -> n, if they don't divide 3, 4, 5, and 7, add them into the array.
         for number in range(11, n, 2):
@@ -23,34 +33,24 @@ class Solution:
             array_primes.append(number)
 
         num_primes = len(array_primes)
-        print(num_primes)
 
         # Loop through the array of perceived primes and filter all non-prime numbers out
         for d_index in range(len(array_primes)):
+            for n_index in range(d_index + 1, len(array_primes)):
 
-            if d_index + 1 < len(array_primes):
-                for n_index in range(d_index + 1, len(array_primes)):
+                # To avoid double-counting of a large number with both factors in the same set, set it as
+                # negative after counting for it, then add a sign check in the conditional.
+                if array_primes[n_index] > 0 and array_primes[n_index] % array_primes[d_index] == 0:
+                    num_primes -= 1
+                    array_primes[n_index] = -array_primes[n_index]
 
-                    # For each number that divides the number at the current index, decrease the number of primes by 1
-                    if array_primes[n_index] % array_primes[d_index] == 0:
-                        print("FOUND ONE")
-                        print(array_primes[n_index])
-                        print(array_primes[d_index])
-
-                        # Remove it from the array
-                        duplicates.append(array_primes.pop(n_index))
-                        num_primes -= 1
-                        print(num_primes)
-
-            print(array_primes)
-
-        print(num_primes)
         return num_primes
 
 
 if __name__ == "__main__":
 
     test = Solution()
-    test.countPrimes(200)
+    print(test.countPrimes(100000))
 
-    
+    # temp = {2:True, 3:True, 5:True, 7:True}
+    # print(len(temp.keys()))
