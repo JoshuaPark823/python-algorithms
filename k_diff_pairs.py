@@ -26,5 +26,25 @@ Note:
 
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
+
+        # Initialize an empty "closed list" to hold already traversed values, and an "open list" with values to be travesed.
+        closed_list = []
+        open_list = nums
+
+        # Loop through the elements in the open_list
+        for num in open_list:
+            
+            
+
+
+
         return
 
+
+if __name__ == "__main__":
+
+    test = Solution()
+
+    test.findPairs([3, 1, 4, 1, 5], 2)
+    test.findPairs([1, 2, 3, 4, 5], 1)
+    test.findPairs([1, 3, 1, 5, 4], 0)
