@@ -18,9 +18,11 @@
 
 ## Major Bugs
 - count_primes.py: </br>
-</br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13. </br>
+</br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13.
 
-  </br>Solution: Set the value of the number that contains both factors as negative the first time it's being counted for. Then with the inclusion of a conditional that checks `array_primes[n_index] > 0` will cause the loop to skip over the value.
+  Solution: Set the value of the number that contains both factors as negative the first time it's being counted for. Then with the inclusion of a conditional that checks `array_primes[n_index] > 0` will cause the loop to skip over the value.</br> </br>
 
 - k_diff_pairs.py: </br>
-</br>Logic: Initially had some logic issues with how to implement the method (for implementations faster than O(nlogn)).
+</br>Logic: Initially had some logic issues with how to implement the method (for implementations faster than O(nlogn)). I was trying to do checks on `abs(value - k)` as opposed to splitting the absolute value into two equations.
+
+  Solution: Because `|a - b| = k` can be split into `(a - b) = k` and `(a - b) = -k`, if we treat these as two separate conditionals we don't get any issues when we change the `hash_map[value]` to False. 
