@@ -60,17 +60,20 @@ class Solution:
         nums_filtered = list(set(nums))
 
         # Case: k > 0. Fill the hash map up with (num : count) pairs
-        for element in nums_filtered:
-            if element not in hash_map:
-                hash_map[element] = True
-        
+        for e in nums_filtered:
+            if e not in hash_map:
+                hash_map[e] = True
+
         # Loop through the individual counts in the hash map
         for value in hash_map.keys():
 
-            # Only executes iff |k - a| = b exists in the map AND if it's value is True (not visited)
-            if abs(value - k) in hash_map and hash_map[abs(value - k)] is True:
+            if (value - k) in hash_map and hash_map[value - k] is True:
                 total_count += 1
-                hash_map[abs(value - k)] = False # Overcount check
+                hash_map[value] = False
+
+            if (value + k) in hash_map and hash_map[value + k] is True:
+                total_count += 1
+                hash_map[value] = False
 
         return total_count
 
@@ -82,3 +85,4 @@ if __name__ == "__main__":
     print(test.findPairs([3, 1, 4, 1, 5], 2))    # --> 2
     print(test.findPairs([1, 2, 3, 4, 5], 1))    # --> 4
     print(test.findPairs([1, 3, 1, 5, 4], 0))    # --> 1
+    print(test.findPairs([1, 2, 3, 4, 5], 4))    # --> 1
