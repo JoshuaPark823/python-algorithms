@@ -29,50 +29,56 @@ from typing import List
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
 
-        # Initialize the count as 0
-        count = 0
-
-        # We're gonna use a hashmap to take advantage of its lookup times, otherwise we'd have to do this
-        # in like quadratic or O(nlogn) time which is too slow
-        nums_filtered = list(set(nums))
         hash_map = {}
+        total_count = 0
 
-        # We know the max size is 10,000. Initialize a dictionary of the max size with (int : False) pairs.
-        # Now our keys contain all values from 0 -> 10,000
-        for i in range (10000):
-            hash_map[i] = False
-        
-        # Go through the hash man again and overwrite all the booleans to True if they're a value in the array.
-        # Should look something like:
-        #   {(0:False), (1:True), (2:False), (3:True), (4:True), (5:True), (6:False), (7:False), (.....)}
+        # Absolute difference can never be negative
+        if k < 0:
+            return 0
+
+        # Case where k == 0, we're just going to be counting the duplicates
+        if k == 0:
+
+            for element in nums:
+
+                # If the element doesn't exist in the hash_map already, put it in with a count of 1
+                if element not in hash_map:
+                    hash_map[element] = 1
+
+                # Else, increment the count of the element by 1 (duplicate)
+                else:
+                    hash_map[element] += 1
+
+            # Loop through the numerous counts in the hash_map. Count the number of duplicate values
+            for count in hash_map.values():
+                if count >= 2:
+                    total_count += 1
+
+            return total_count
+
+        # Remove the duplicates!
+        nums_filtered = list(set(nums))
+
+        # Case: k > 0. Fill the hash map up with (num : count) pairs
         for element in nums_filtered:
-            hash_map[element] = True
+            if element not in hash_map:
+                hash_map[element] = True
         
-        # Absolute difference -> |a - b| = k
-        #   Split into two cases: (a + b) = k
-        #                        -(a + b) = k --> -a - b = k
+        # Loop through the individual counts in the hash map
+        for value in hash_map.keys():
 
-        # We know for sure that A is contained in the hash map. We're also given K. 
-        # This means we can check if K-A exists (is True), or K+A exists (is True)
+            # Only executes iff |k - a| = b exists in the map AND if it's value is True (not visited)
+            if abs(value - k) in hash_map and hash_map[abs(value - k)] is True:
+                total_count += 1
+                hash_map[abs(value - k)] = False # Overcount check
 
-        for i in range(len(nums) - 1):
-
-            a = nums[i]
-
-            # If hash_map at abs(k-a) is True, we increment the count
-            if hash_map[abs(k - a)]:
-                count += 1
-
-            print(hash_map)
-
-        print(count)
-        return count
+        return total_count
 
 
 if __name__ == "__main__":
 
     test = Solution()
 
-    # test.findPairs([3, 1, 4, 1, 5], 2)
-    test.findPairs([1, 2, 3, 4, 5], 1)
-    # test.findPairs([1, 3, 1, 5, 4], 0)
+    print(test.findPairs([3, 1, 4, 1, 5], 2))    # --> 2
+    print(test.findPairs([1, 2, 3, 4, 5], 1))    # --> 4
+    print(test.findPairs([1, 3, 1, 5, 4], 0))    # --> 1
