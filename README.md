@@ -16,6 +16,8 @@
 - k_diff_pairs.py: </br>
 </br>Faster than 90% of all other Python3 submissions. Classic case of where hash maps can be used to maximize time complexity. Average time is linear.
 
+  ![Screenshot](k_diff_pairs/submission_sc.png)
+
 ## Major Bugs
 - count_primes.py: </br>
 </br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13.
