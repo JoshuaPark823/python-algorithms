@@ -19,13 +19,27 @@ class ListNode:
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
 
+        # Set the current position to the head
+        current = head
 
+        # Because we're at the head, the previous node dne
+        previous =None
+        next = None
         
-        return
+        # Iterate while the current node isn't null
+        while current:
 
-if __name__ == "__main:":
+            # Set next as the current node's next pointer
+            next= current.next
 
-    test = Solution()
+            # Set the current's next pointer to point to the previous node (going backwards)
+            current.next =previous
 
-    head_node = ListNode()
-    print(test.reverseList(head_node))
+            # Set the previous node as the current node
+            previous = current
+
+            # Set the current node to the next node
+            current = next
+
+        # Return the new head
+        return previous
