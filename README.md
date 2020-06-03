@@ -27,4 +27,5 @@
 - k_diff_pairs.py: </br>
 </br>Logic: Initially had some logic issues with how to implement the method (for implementations faster than O(nlogn)). I was trying to do checks on `abs(value - k)` as opposed to splitting the absolute value into two equations.
 
-  Solution: Because `|a - b| = k` can be split into `(a - b) = k` and `(a - b) = -k`, if we treat these as two separate conditionals we don't get any issues when we change the `hash_map[value]` to False. 
+  Solution: Because `|a - b| = k` can be split into `(a - b) = k` and `(a - b) = -k`, if we treat these as two separate conditionals we don't get any issues when we change the `hash_map[value]` to False.
+
