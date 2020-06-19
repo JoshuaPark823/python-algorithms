@@ -17,6 +17,11 @@
 </br>Faster than 90% of all other Python3 submissions. Classic case of where hash maps can be used to maximize time complexity. Average time is linear.
 
   ![Screenshot](k_diff_pairs/submission_sc.png)
+  
+- n_unique_sumzero.py: </br>
+</br>Optimized this one for space complexity to demonstrate that I can optimize both space & time. Uses 75% less space than all other submissions.
+
+  ![Screenshot](n_unique_sumzero/sumzero_sc.png)
 
 ## Major Bugs
 - count_primes.py: </br>
