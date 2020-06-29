@@ -4,6 +4,7 @@
 - At the top of each file, the problem's prompt, example outputs, and constraints/restrictions will be posted as a comment.
 - Following the constraints, solution is written below.
 - Time complexity will be included in the commit message.
+- (Edit) Some of the algorithms are organized into Jupyter Notebooks as there were periods of time that I did not have access to a text editor.
 
 ## Purpose
 - To gain further proficiency with algos and data structures.
@@ -23,7 +24,7 @@
 
   ![Screenshot](n_unique_sumzero/sumzero_sc.png)
 
-## Major Bugs
+## Hurdles
 - count_primes.py: </br>
 </br>Double Counting: The current implementation uses nested for loops to iterate through the array of primes and subtracts 1 from the `num_primes` if it comes across one where `array[numerator] % array[denominator] == 0`. However, this results in a miscount where if n is 143, it'll substract one for when numerator = 11 and also for numerator = 13.
 
