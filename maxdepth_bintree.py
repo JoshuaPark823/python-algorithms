@@ -25,21 +25,18 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def maxDepth(self, root: TreeNode, depth_var) -> int:
+    def maxDepth(self, root: TreeNode) -> int:
 
-        if root: 
-            
+        # Check if the root is present at all, if not, return 0
+        if root is None:
+            return 0
 
+        # Recur both left and right subtrees
+        else:
+            depth_left = self.maxDepth(root.left)
+            depth_right = self.maxDepth(root.right)
 
-"""
-ex bin tree, uncompleted
+            # Apply a ternary operator to decide which is larger
+            depth = depth_left + 1 if depth_left > depth_right else depth_right + 1
 
-    A
-B       C
-D,E     F
-        G, H
-
-before recurring, check if there are child nodes, if there.
-
-
-"""
+            return depth
