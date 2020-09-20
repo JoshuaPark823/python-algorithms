@@ -25,7 +25,21 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def maxDepth(self, root: TreeNode) -> int:
-        
-        return
+    def maxDepth(self, root: TreeNode, depth_var) -> int:
 
+        if root: 
+            
+
+
+"""
+ex bin tree, uncompleted
+
+    A
+B       C
+D,E     F
+        G, H
+
+before recurring, check if there are child nodes, if there.
+
+
+"""
