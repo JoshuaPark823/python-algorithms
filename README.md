@@ -18,6 +18,11 @@
 </br>Faster than 90% of all other Python3 submissions. Classic case of where hash maps can be used to maximize time complexity. Average time is linear.
 
   ![Screenshot](k_diff_pairs/submission_sc.png)
+
+- maxdepth_bintree.py: </br>
+</br>Faster than 94% of all other Python3 submissions. Demonstrating recursive traversal of binary trees and use of Python's ternary operator.
+
+  ![Screenshot](maxdepth_bintree/submission_sc_maxdepth.png)
   
 - n_unique_sumzero.py: </br>
 </br>Optimized this one for space complexity to demonstrate that I can optimize both space & time. Uses 75% less space than all other submissions.
